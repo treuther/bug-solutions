@@ -1,1 +1,15 @@
-<h1>This is the Products' index page.</h1>
+<h1>All Products</h1>
+
+<div>
+    <% @product.each do |product| %>
+        <% if product.user_id == @user.id %>
+        <p><a href="/products/<%= product.id%>"><%=product.name%>
+        <% else %>
+        <p><%=product.name%></a></p>
+        <%end%>
+    <%end%>
+</div>
+
+<div>
+    <!--input submit goes here-->
+</div>

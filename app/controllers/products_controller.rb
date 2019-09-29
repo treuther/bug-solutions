@@ -40,4 +40,5 @@ class ProductsController < ApplicationController
   delete "/products/:id/delete" do
     redirect "/products"
   end
+  
 end
