@@ -1,8 +1,14 @@
 class ProductsController < ApplicationController
 
   # GET: /products
-  get "/products" do
-    erb :"/products/index.html"
+  get '/products' do
+    if logged_in?
+      @product = Product.all
+      @user = current_user
+      erb :'products/index'
+    else
+      redirect '/login'
+    end
   end
 
   # GET: /products/new
