@@ -3,14 +3,15 @@
 <div>
     <% @product.each do |product| %>
         <% if product.user_id == @user.id %>
-        <p><a href="/products/<%= product.id%>"><%=product.name%>
+        <p><a href="/products/<%= product.id%>"><%=product.product_name%>
         <% else %>
-        <p><%=product.name%></a></p>
+        <p><%=product.product_name%></a></p>
         <%end%>
     <%end%>
 </div>
 
 <div>
-    <!--Add products here-->
     <a href="/products/new"><input type="submit" value="Add Products"></a>
+    <!--FINISH CONNECTION WITH BUGS-->
+    <a href="/bugs"><input type="submit" value="View by Bug"></a>
 </div>

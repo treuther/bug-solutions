@@ -1,1 +1,17 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h1>Enter Your New Product</h1>
+
+<form method="post" action="/products">
+    <p><label>Product Name:</label></p>
+        <p><input type="text" name="product_name"></p>
+    <p><label>Active Ingredient:</label></p>
+        <p><input type="text" name="active_ingredient"></p>
+    <p><label>Bug</label></p>
+    <% @bugs.each do |bug| %>
+        <p><input type="checkbox" name="product[bug_ids][]" value="<%= bug.id %>"> <%= bug.bug_name %></p>
+        <%end%>
+    <p><label>Create New Bug:</label></p>
+        <p><input type="text" name="bug[bug_name]"></p>
+    <p><label>Description</label></p>
+        <textarea name="description" rows="10" cols="30"></textarea>
+    <p><input type="submit" name="submit" value="ADD"></p>
+</form>

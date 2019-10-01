@@ -2,12 +2,12 @@ class BugsController < ApplicationController
 
   # GET: /bugs
   get "/bugs" do
-    erb :"/bugs/index.html"
+    erb :"/bugs/index"
   end
 
   # GET: /bugs/new
   get "/bugs/new" do
-    erb :"/bu_gs/new.html"
+    erb :"/bugs/new"
   end
 
   # POST: /bugs
@@ -17,12 +17,12 @@ class BugsController < ApplicationController
 
   # GET: /bugs/5
   get "/bugs/:id" do
-    erb :"/bugs/show.html"
+    erb :"/bugs/show"
   end
 
   # GET: /bugs/5/edit
   get "/bugs/:id/edit" do
-    erb :"/bugs/edit.html"
+    erb :"/bugs/edit"
   end
 
   # PATCH: /bugs/5

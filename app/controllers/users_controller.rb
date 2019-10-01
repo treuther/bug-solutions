@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # POST: /login
   post '/login' do
     @user = User.find_by(username: params[:username])
       if @user && @user.authenticate(params[:password])
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
       end
   end
 
+  # GET: /signup
   get '/signup' do
     if !logged_in?
       erb :'/users/create_user'
@@ -27,6 +29,7 @@ class UsersController < ApplicationController
     end
   end
 
+  #POST: /signup
   post '/signup' do
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
       redirect :'/signup'
@@ -38,14 +41,24 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET: /logout
+  get '/logout' do
+    if logged_in?
+      session.destroy
+      redirect to '/login'
+    else
+      redirect to '/'
+    end
+  end
+
   # GET: /users
   get "/users" do
-    erb :"/users/index.html"
+    erb :"/users/index"
   end
 
   # GET: /users/new
   get "/users/new" do
-    erb :"/users/new.html"
+    erb :"/users/new"
   end
 
   # POST: /users
@@ -55,12 +68,12 @@ class UsersController < ApplicationController
 
   # GET: /users/5
   get "/users/:id" do
-    erb :"/users/show.html"
+    erb :"/users/show"
   end
 
   # GET: /users/5/edit
   get "/users/:id/edit" do
-    erb :"/users/edit.html"
+    erb :"/users/edit"
   end
 
   # PATCH: /users/5
