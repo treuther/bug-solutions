@@ -1,1 +1,19 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1><%= @product.product_name %></h1>
+<div>
+    <h3>Active Ingredient:</h3>
+        <p><%= @product.active_ingredient %></p>
+    <h3>Effective Against:</h3>
+    <% @product.bugs.each do |bug| %>
+        <p><a href="/bugs/<%= bug.slug %>"> <%= bug.bug_name %> </a></p>
+    <% end %>
+    <h4>Description:</h4>
+        <p><%= @product.description %></p>
+</div>
+
+<div>
+    <a href="/products/<%=@product.id%>/edit">Edit Product</a>
+    <form action="/products/<%= @product.id %>/delete" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button type="submit">Delete Product</button>
+    </form>
+</div>

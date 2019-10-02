@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
   end
 
   # GET: /products/5
-  get '/products/:id' do
+  get '/products/:id' do        #ERROR HAPPENING WITH THIS AND PATCH TO SAVE PRODUCT EDITS
     if logged_in?
       @product = Product.find_by(id: params[:id])
       @user = User.find_by(id: @product.user_id)
@@ -50,12 +50,34 @@ class ProductsController < ApplicationController
 
   # GET: /products/5/edit
   get "/products/:id/edit" do
-    erb :"/products/edit"
+    if logged_in?
+      @product = Product.find_by(id: params[:id])
+      @user = User.find_by(id: @product.user_id)
+      if @user == current_user
+        erb :"/products/edit"
+      else
+        redirect to "/products"
+      end
+    else
+      redirect to "/login"
+    end
   end
 
   # PATCH: /products/5
   patch "/products/:id" do
-    redirect "/products/:id"
+    @product = Product.find_by(id: params[:id])
+    if @user == current_user && !params[:product_name].empty? && !params[:active_ingredient].empty? && !params[:description].empty?
+      @product.update(product_name: params[:product_name], active_ingredient: params[:active_ingredient], description: params[:description])
+      if !params[:bug][:bug_name].empty?
+        @product.bugs << Bug.create(params[:bug])
+      end
+    @product.save
+    redirect to "/products"
+    elsif
+      redirect to "/products/edit"
+    else
+      redirect to "/login"
+    end 
   end
 
   # DELETE: /products/5/delete
