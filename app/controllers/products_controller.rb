@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
 
   # GET: /products/5
   get '/products/:id' do        #ERROR HAPPENING WITH THIS AND PATCH TO SAVE PRODUCT EDITS
-    if logged_in?
+    if logged_in?  
       @product = Product.find_by(id: params[:id])
       @user = User.find_by(id: @product.user_id)
       erb :'/products/show'
@@ -54,7 +54,7 @@ class ProductsController < ApplicationController
       @product = Product.find_by(id: params[:id])
       @user = User.find_by(id: @product.user_id)
       if @user == current_user
-        erb :"/products/edit"
+        erb :'/products/edit'
       else
         redirect to "/products"
       end

@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /mnt/c/Users/tracy/dev/flatiron/labs/bug-solutions/app/controllers/products_controller.rb @ line 43 self.GET /products/:id:
+
+    [1;34m38[0m: 
+    [1;34m39[0m:   [1;34m# GET: /products/5[0m
+    [1;34m40[0m:   get [31m[1;31m'[0m[31m/products/:id[1;31m'[0m[31m[0m [32mdo[0m        [1;34m#ERROR HAPPENING WITH THIS AND PATCH TO SAVE PRODUCT EDITS[0m
+    [1;34m41[0m:     [32mif[0m logged_in?  
+    [1;34m42[0m:       @product = [1;34;4mProduct[0m.find_by([35mid[0m: params[[33m:id[0m])
+ => [1;34m43[0m:       binding.pry
+    [1;34m44[0m:       @user = [1;34;4mUser[0m.find_by([35mid[0m: @product.user_id)
+    [1;34m45[0m:       erb [33m:[1;33m'[0m[33m/products/show[1;33m'[0m[33m[0m
+    [1;34m46[0m:     [32melse[0m
+    [1;34m47[0m:       redirect [31m[1;31m'[0m[31m/login[1;31m'[0m[31m[0m
+    [1;34m48[0m:     [32mend[0m
+
