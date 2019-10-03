@@ -2,13 +2,10 @@ class BugsController < ApplicationController
 
   # GET: /bugs
   get '/bugs' do
-    if logged_in?
-      @bugs = Bug.all
-      # @product.user = current_user
-      erb :'bugs/index'
-    else
+    if !logged_in?
       redirect '/login'
     end
+    erb :'bugs/index'
   end
 
   # GET: /bugs/new

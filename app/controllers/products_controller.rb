@@ -66,13 +66,13 @@ class ProductsController < ApplicationController
   # PATCH: /products/5
   patch "/products/:id" do
     @product = Product.find_by(id: params[:id])
-    if @product.user_id == current_user && !params[:product_name].empty? && !params[:active_ingredient].empty? && !params[:description].empty?
+    if @product.user_id == current_user.id && !params[:product_name].empty? && !params[:active_ingredient].empty? && !params[:description].empty?
       @product.update(product_name: params[:product_name], active_ingredient: params[:active_ingredient], description: params[:description])
       if !params[:bug][:bug_name].empty?
         @product.bugs << Bug.create(params[:bug])
       end
       @product.save
-      redirect to "/products"
+      redirect to "/products/#{@product.id}"
     elsif
       redirect to "/products/#{@product.id}/edit"
     else

@@ -14,25 +14,37 @@
     <link rel="stylesheet" href="/stylesheets/main.css" />
   </head>
   <body>
+
+  <div class="menu">
+        <a href="/products/new"><input type="submit" value="Add Products"></a>
+        <a href="/bugs/new"><input type="submit" value="Add Bugs"></a>
+        <a href="/products"><input type="submit" value="View by Product"></a>
+        <a href="/bugs"><input type="submit" value="View by Bug"></a>
+      </div>  
+
+      <div class="logout">
+        <a href="/logout"><input type="submit" value="Logout"></a>
+      </div>
+      
     <div class="wrapper">
 
         <%= yield %>
 
-    <div class="footer">
-      <a href="/products/new"><input type="submit" value="Add Products"></a>
-      <a href="/bugs/new"><input type="submit" value="Add Bugs"></a>
-      <!--FINISH CONNECTION WITH BUGS-->
-      <a href="/products"><input type="submit" value="View by Product"></a>
-      <a href="/bugs"><input type="submit" value="View by Bug"></a>
-    </div>  
+      <div class="menu">
+        <a href="/products/new"><input type="submit" value="Add Products"></a>
+        <a href="/bugs/new"><input type="submit" value="Add Bugs"></a>
+        <a href="/products"><input type="submit" value="View by Product"></a>
+        <a href="/bugs"><input type="submit" value="View by Bug"></a>
+      </div>  
 
-    <div>
-      <a href="/logout"><input type="submit" value="Logout"></a>
-    </div>
+      <div class="logout">
+        <a href="/logout"><input type="submit" value="Logout"></a>
+      </div>
 
       <footer class="branding">
         <small>&copy; 2019 <strong>BugSolutions</strong></small>
       </footer>
+
     </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
