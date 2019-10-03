@@ -15,31 +15,20 @@
   </head>
   <body>
 
-  <div class="menu">
-        <a href="/products/new"><input type="submit" value="Add Products"></a>
-        <a href="/bugs/new"><input type="submit" value="Add Bugs"></a>
-        <a href="/products"><input type="submit" value="View by Product"></a>
-        <a href="/bugs"><input type="submit" value="View by Bug"></a>
-      </div>  
-
-      <div class="logout">
-        <a href="/logout"><input type="submit" value="Logout"></a>
-      </div>
+  <navigation>
+    <ul>
+      <li><a href="/products/new">Add Products</a></li>
+      <li><a href="/bugs/new">Add Bugs</a></li>
+      <li><a href="/products">View by Product</a></li>
+      <li><a href="/bugs">View by Bug</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+  </navigation>  
       
     <div class="wrapper">
 
-        <%= yield %>
-
-      <div class="menu">
-        <a href="/products/new"><input type="submit" value="Add Products"></a>
-        <a href="/bugs/new"><input type="submit" value="Add Bugs"></a>
-        <a href="/products"><input type="submit" value="View by Product"></a>
-        <a href="/bugs"><input type="submit" value="View by Bug"></a>
-      </div>  
-
-      <div class="logout">
-        <a href="/logout"><input type="submit" value="Logout"></a>
-      </div>
+        <%= yield %>  
+        
 
       <footer class="branding">
         <small>&copy; 2019 <strong>BugSolutions</strong></small>
