@@ -1,23 +1,46 @@
 class BugsController < ApplicationController
 
   # GET: /bugs
-  get "/bugs" do
-    erb :"/bugs/index"
+  get '/bugs' do
+    if logged_in?
+      @bug = Bug.all
+      @user = current_user
+      erb :'bugs/index'
+    else
+      redirect '/login'
+    end
   end
 
   # GET: /bugs/new
   get "/bugs/new" do
-    erb :"/bugs/new"
+    if logged_in?
+      erb :"/bugs/new"
+    else
+      redirect '/login'
+    end
   end
 
   # POST: /bugs
   post "/bugs" do
-    redirect "/bugs"
+    @bug = Bug.new(bug_name: params[:bug_name])
+    if !params[:bug_name].empty?
+      current_user.bugs << @bug
+      @bug.save
+      redirect "/bugs"
+    else
+      redirect to "/bugs/new"
+    end
   end
 
   # GET: /bugs/5
-  get "/bugs/:id" do
-    erb :"/bugs/show"
+  get '/bugs/:id' do
+    if logged_in?  
+      @bug = Bug.find_by(id: params[:id])
+      @user = User.find_by(id: @bug.user_id)
+      erb :'/bugs/show'
+    else
+      redirect '/login'
+    end
   end
 
   # GET: /bugs/5/edit

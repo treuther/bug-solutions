@@ -1,7 +1,11 @@
 <h1>All Bugs</h1>
 
 <div>
-    <% @bugs.each do |bug| %>
-        <p><a href="/bugs/<%= bug.id%>"></a></p>
+    <% @bug.each do |bug| %>
+        <% if bug.user_id == @user.id %>
+            <p><a href="/bugs/<%= bug.id%>"><%=bug.bug_name%>
+        <% else %>
+            <p><%=bug.bug_name%></a></p>
+        <%end%>
     <%end%>
 </div>

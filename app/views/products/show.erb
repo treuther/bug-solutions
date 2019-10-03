@@ -4,7 +4,7 @@
         <p><%= @product.active_ingredient %></p>
     <h3>Effective Against:</h3>
     <% @product.bugs.each do |bug| %>
-        <p><a href="/bugs/<%= bug.slug %>"> <%= bug.bug_name %> </a></p>
+        <p><%= bug.bug_name %></p>
     <% end %>
     <h4>Description:</h4>
         <p><%= @product.description %></p>

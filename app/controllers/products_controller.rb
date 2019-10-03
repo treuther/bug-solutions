@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
   end
 
   # GET: /products/5
-  get '/products/:id' do        #ERROR HAPPENING WITH THIS AND PATCH TO SAVE PRODUCT EDITS
+  get '/products/:id' do
     if logged_in?  
       @product = Product.find_by(id: params[:id])
       @user = User.find_by(id: @product.user_id)
@@ -81,8 +81,16 @@ class ProductsController < ApplicationController
   end
 
   # DELETE: /products/5/delete
-  delete "/products/:id/delete" do
-    redirect "/products"
+  delete '/products/:id/delete' do
+    if logged_in?
+      @product = Product.find_by_id(params[:id])
+      if @product && @product.user == current_user
+        @product.delete
+      end
+      redirect to '/products'
+    else
+      redirect to '/login'
+    end
   end
   
 end
