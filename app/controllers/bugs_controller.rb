@@ -3,8 +3,8 @@ class BugsController < ApplicationController
   # GET: /bugs
   get '/bugs' do
     if logged_in?
-      @bug = Bug.all
-      @user = current_user
+      @bugs = Bug.all
+      # @product.user = current_user
       erb :'bugs/index'
     else
       redirect '/login'

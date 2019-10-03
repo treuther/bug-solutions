@@ -1,9 +1,15 @@
 <h1>All Bugs</h1>
 
 <div>
-    <% @bug.each do |bug| %>
-        <% if bug.user_id == @user.id %>
-            <p><a href="/bugs/<%= bug.id%>"><%=bug.bug_name%>
+    <% @bugs.each do |bug| %>
+            <p><a href="/bugs/<%= bug.id %>"><%=bug.bug_name%>
+    <%end%>
+</div>
+
+<div>
+    <% @bugs.each do |bug| %>
+        <% if product.bug.user_id == @user.id %>
+            <p><a href="/bugs/<%= bug.slug %>"><%=bug.bug_name%>
         <% else %>
             <p><%=bug.bug_name%></a></p>
         <%end%>
