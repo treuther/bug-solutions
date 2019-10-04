@@ -1,1 +1,12 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1><%= @bug.bug_name %> </h1>
+<div>
+    <h2>Associated Products</h2>
+
+        <% @bug.products.each do |product| %>
+            <% if product.user_id == current_user.id %>
+                <p><a href="/products/<%= product.id %>"><%= product.product_name %></a></p>
+            <% else %>
+                <p><%=product.product_name%></a></p>
+            <% end %>
+        <% end %>
+</div>

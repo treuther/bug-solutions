@@ -1,5 +1,4 @@
 navigation ul {
-  background-color: #fff;
   overflow: hidden;
   list-style: none;
   margin: 0;
@@ -22,7 +21,7 @@ navigation li a {
 }
 
 navigation li a:hover {
-  background-color: #111;
+  background-color: rgb(204, 200, 200);
 }
 
 @media screen {

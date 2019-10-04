@@ -33,7 +33,6 @@ class BugsController < ApplicationController
   get '/bugs/:id' do
     if logged_in?  
       @bug = Bug.find_by(id: params[:id])
-      @user = User.find_by(id: @bug.user_id)
       erb :'/bugs/show'
     else
       redirect '/login'
