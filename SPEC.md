@@ -11,10 +11,10 @@ Specs:
 - [x] Ensure that users can't modify content created by other users - Helper methods, logged_in? and currenty_user are used within the controllers. If user is not the creater of a product, they have view rights only, or they are redirected to login in order to view or modify.
 - [ ] Include user input validations
 - [ ] BONUS - not required - Display validation failures to user with error message (example form URL e.g. /posts/new)
-- [ ] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+- [x] Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code. - Description, install instructions, contributors guide and a link to the License has been provided.
 
 Confirm
-- [ ] You have a large number of small Git commits
-- [ ] Your commit messages are meaningful
-- [ ] You made the changes in a commit that relate to the commit message
-- [ ] You don't include changes in a commit that aren't related to the commit message
+- [x] You have a large number of small Git commits
+- [x] Your commit messages are meaningful
+- [x] You made the changes in a commit that relate to the commit message
+- [x] You don't include changes in a commit that aren't related to the commit message - I am aware that I need to work on this one.
