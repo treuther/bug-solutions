@@ -39,18 +39,18 @@ class BugsController < ApplicationController
     end
   end
 
-  # GET: /bugs/5/edit
-  get "/bugs/:id/edit" do
-    erb :"/bugs/edit"
-  end
+  # # GET: /bugs/5/edit
+  # get "/bugs/:id/edit" do
+  #   erb :"/bugs/edit"
+  # end
 
-  # PATCH: /bugs/5
-  patch "/bugs/:id" do
-    redirect "/bugs/:id"
-  end
+  # # PATCH: /bugs/5
+  # patch "/bugs/:id" do
+  #   redirect "/bugs/:id"
+  # end
 
-  # DELETE: /bugs/5/delete
-  delete "/bugs/:id/delete" do
-    redirect "/bugs"
-  end
+  # # DELETE: /bugs/5/delete
+  # delete "/bugs/:id/delete" do
+  #   redirect "/bugs"
+  # end
 end
