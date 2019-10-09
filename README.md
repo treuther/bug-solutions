@@ -18,25 +18,22 @@ Bugs cannot be deleted as an independent entity, rather bugs can be edited or de
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Be sure to clone this lab either via GitHub's HTTP or SSH.
 
-```ruby
-gem 'bug-solutions'
-```
+Once installed, in your terminal be sure to run bundle install, or bundle exec install so that the appropriate gems load for this application.
 
-And then execute:
+bundle Install
 
-    $ bundle
+run shotgun
 
-Or install it yourself as:
-
-    $ gem install bug-solutions
 
 ## Usage
 
-After installation, run `shotgun` in your terminal. Once shotgun is running, be sure to following the instructions of either ctrl + click on the provided local host link (ie http://127.0.0.1:9393) or copying and pasting the provided link into your browser.
+After installation, run `shotgun` in your terminal. Once shotgun is running, be sure to follow the instructions of either ctrl + click on the provided local host link (ie http://127.0.0.1:9393) or copying and pasting the provided link into a new browser level.
 
-Once you have the browser loaded with the BugSolutions site, follow screen instruction of either logging in or signing up to look through lists of products or to create your own.
+Once you have the browser loaded with the BugSolutions site, follow screen instructions of either logging in or signing up to look through lists of products or to create your own.
+
+Once you are logged in, explore the application by clicking on the different link options, such as View by Product, View by Bug, Create New Product and Edit Product.
 
 ## Contributing
 
