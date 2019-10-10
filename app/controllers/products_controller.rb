@@ -52,8 +52,7 @@ class ProductsController < ApplicationController
   get "/products/:id/edit" do
     if logged_in?
       @product = Product.find_by(id: params[:id])
-      @user = User.find_by(id: @product.user_id)
-      if @user == current_user
+      if @product.user == current_user
         erb :'/products/edit'
       else
         redirect to "/products"
