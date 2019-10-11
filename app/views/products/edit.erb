@@ -7,8 +7,9 @@
     <p><label>Active Ingredient:</label></p>
         <p><input type="text" name="active_ingredient" value="<%=@product.active_ingredient%>"></p>
     <p><label>Effective Against:</label></p>
+
     <% Bug.all.each do |bug| %>
-        <p><input type="checkbox" <%= 'checked' if @product.bugs.include?(bug) %> name="bugs[]" value="<%= bug.id %>"><%= bug.bug_name %></p>
+        <p><input type="checkbox" <%= 'checked' if @product.bugs.include?(bug) %> name="product[bug_ids][]" value="<%= bug.id %>"><%= bug.bug_name %></p>
     <% end %>
     <p><label>Create New Bug:</label></p>
         <p><input type="text" name="bug[bug_name]"></p>

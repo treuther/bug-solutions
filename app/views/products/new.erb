@@ -6,7 +6,7 @@
     <p><label>Active Ingredient:</label></p>
         <p><input type="text" name="active_ingredient"></p>
     <p><label>Bug</label></p>
-    <% @bugs.each do |bug| %>
+    <% Bug.all.each do |bug| %>
         <p><input type="checkbox" name="product[bug_ids][]" value="<%= bug.id %>"> <%= bug.bug_name %></p>
         <%end%>
     <p><label>Create New Bug:</label></p>

@@ -2,18 +2,17 @@ class ProductsController < ApplicationController
 
   # GET: /products
   get '/products' do
-    if logged_in?
-      @product = Product.all
-      @user = current_user
-      erb :'products/index'
-    else
+    if !logged_in?
       redirect '/login'
+    else
+      @product = Product.all
+      erb :'products/index'
     end
   end
 
   # GET: /products/new
   get '/products/new' do
-    @bugs = Bug.all 
+    # @bugs = Bug.all 
     if logged_in?
       erb :'/products/new'
     else
@@ -26,9 +25,11 @@ class ProductsController < ApplicationController
     @product = Product.new(product_name: params[:product_name], active_ingredient: params[:active_ingredient], description: params[:description], user_id: session[:user_id])
     if !params[:product_name].empty? && !params[:active_ingredient].empty? && !params[:description].empty?
       current_user.products << @product
-      if !params[:bug][:bug_name].empty?
+      
+      unless params[:bug][:bug_name].empty?
         @product.bugs << Bug.create(params[:bug])
       end
+
       @product.save
       redirect to "/products"
     else
@@ -42,6 +43,7 @@ class ProductsController < ApplicationController
       @product = Product.find_by(id: params[:id])
       @user = User.find_by(id: @product.user_id)
       erb :'/products/show'
+      
     else
       redirect '/login'
     end
@@ -67,7 +69,7 @@ class ProductsController < ApplicationController
     @product = Product.find_by(id: params[:id])
     if @product.user_id == current_user.id && !params[:product_name].empty? && !params[:active_ingredient].empty? && !params[:description].empty?
       @product.update(product_name: params[:product_name], active_ingredient: params[:active_ingredient], description: params[:description])
-      if !params[:bug][:bug_name].empty?
+      unless params[:bug][:bug_name].empty?
         @product.bugs << Bug.create(params[:bug])
       end
       @product.save
