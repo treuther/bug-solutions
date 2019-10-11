@@ -25,11 +25,14 @@ class ProductsController < ApplicationController
     @product = Product.new(product_name: params[:product_name], active_ingredient: params[:active_ingredient], description: params[:description], user_id: session[:user_id])
     if !params[:product_name].empty? && !params[:active_ingredient].empty? && !params[:description].empty?
       current_user.products << @product
-      
-      unless params[:bug][:bug_name].empty?
+      if !params[:bug][:bug_name].empty?
         @product.bugs << Bug.create(params[:bug])
       end
-
+      if params[:product]
+        params[:product][:bug_ids].each do |bug_id|
+          @product.bugs << Bug.find_by_id(bug_id)
+        end
+      end
       @product.save
       redirect to "/products"
     else
@@ -69,7 +72,15 @@ class ProductsController < ApplicationController
     @product = Product.find_by(id: params[:id])
     if @product.user_id == current_user.id && !params[:product_name].empty? && !params[:active_ingredient].empty? && !params[:description].empty?
       @product.update(product_name: params[:product_name], active_ingredient: params[:active_ingredient], description: params[:description])
-      unless params[:bug][:bug_name].empty?
+      @product.bugs = []
+      if params[:product]
+        if !params[:product][:bug_ids].empty?
+          params[:product][:bug_ids].each do |bug_id|
+            @product.bugs << Bug.find_by_id(bug_id)
+          end
+        end
+      end
+      if !params[:bug][:bug_name].empty?
         @product.bugs << Bug.create(params[:bug])
       end
       @product.save
