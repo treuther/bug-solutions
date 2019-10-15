@@ -2,22 +2,16 @@ class ProductsController < ApplicationController
 
   # GET: /products
   get '/products' do
-    if !logged_in?
-      redirect '/login'
-    else
+    if_not_logged_in_redirect
       @product = Product.all
       erb :'products/index'
-    end
   end
 
   # GET: /products/new
   get '/products/new' do
     # @bugs = Bug.all 
-    if logged_in?
+    if_not_logged_in_redirect
       erb :'/products/new'
-    else
-      redirect to "/login"
-    end
   end
 
   # POST: /products
@@ -55,16 +49,13 @@ class ProductsController < ApplicationController
 
   # GET: /products/5/edit
   get "/products/:id/edit" do
-    if logged_in?
+    if_not_logged_in_redirect
       @product = Product.find_by(id: params[:id])
       if @product.user == current_user
         erb :'/products/edit'
       else
         redirect to "/products"
       end
-    else
-      redirect to "/login"
-    end
   end
 
   # PATCH: /products/5

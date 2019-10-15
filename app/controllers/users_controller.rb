@@ -33,6 +33,8 @@ class UsersController < ApplicationController
   post '/signup' do
     if params[:username] == "" || params[:email] == "" || params[:password] == ""
       redirect :'/signup'
+    elsif @user = User.find_by(username: params[:username])
+      redirect :'/login'
     else
       @user = User.create(params)
       session[:user_id] = @user.id #:user_id is a session key. @user.id is assigning the session key to the user's id that is in session.

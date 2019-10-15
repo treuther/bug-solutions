@@ -5,7 +5,7 @@
         <% if product.user == current_user %>
             <p><a href="/products/<%= product.id %>"><%= product.product_name %></a>
         <% else %>
-            <p><%=product.product_name%></p>
+            <p><%=product.product_name%> - added by <%= product.user.username %></p>
         <%end%>
     <%end%>
 </div>
